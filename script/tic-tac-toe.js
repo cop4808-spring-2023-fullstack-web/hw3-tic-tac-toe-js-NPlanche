@@ -4,12 +4,14 @@ let gameActive = true;
 let currentPlayer = "X";
 let gameState = ["", "", "", "", "", "", "", "", ""];
 
+//displays winning message 
 const winningMessage = () => `Player ${currentPlayer} has won!`;
 const drawMessage = () => `Game ended in a draw!`;
 const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
 
 statusDisplay.innerHTML = currentPlayerTurn();
 
+//condition for a player
 const winningConditions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -21,62 +23,139 @@ const winningConditions = [
     [2, 4, 6]
 ];
 
+//this function handles the click 
 function handleCellPlayed(clickedCell, clickedCellIndex) {
     gameState[clickedCellIndex] = currentPlayer;
     clickedCell.innerHTML = currentPlayer;
 }
 
-function handlePlayerChange() {
-    currentPlayer = currentPlayer === "X" ? "O" : "X";
-    statusDisplay.innerHTML = currentPlayerTurn();
-}
-
-function handleResultValidation() {
+//Check who won 
+function checkWin(){
     let roundWon = false;
+
+    //compare the game state to the winning conditions array
     for (let i = 0; i <= 7; i++) {
         const winCondition = winningConditions[i];
         let a = gameState[winCondition[0]];
         let b = gameState[winCondition[1]];
         let c = gameState[winCondition[2]];
+
+        //if either a, b, or c are empty then the game is not won
         if (a === '' || b === '' || c === '') {
             continue;
         }
+
+        // if a, b, and c are the same then that player has won
         if (a === b && b === c) {
+            //that player has won the game
             roundWon = true;
+            //get out of  the loop
             break
         }
     }
 
+    //game has been won
+    //disable click
     if (roundWon) {
         statusDisplay.innerHTML = winningMessage();
+        //game is no longer active because its be won
         gameActive = false;
         statusDisplay.style.color = "rgb(251,100,204)";
-        return;
+        return roundWon;
     }
 
+    //searches to see  if the board has empty spaces
     let roundDraw = !gameState.includes("");
+    //its a draw
     if (roundDraw) {
+        //display draw message
         statusDisplay.innerHTML = drawMessage();
+        //game no longer active, no clicking 
         gameActive = false;
+        //color of the message
         statusDisplay.style.color = "rgb(251,100,204)";
-        return;
+        return gameActive;
     }
 
-    handlePlayerChange();
+    return false;
 }
 
+//changes the player from x to o to x 
+function handlePlayerChange() {
+    //toggles the player
+    //short handed if else statement
+    currentPlayer = currentPlayer === "X" ? "O" : "X";
+    //displays who the current player is 
+    statusDisplay.innerHTML = currentPlayerTurn();
+}
+
+//handles the validation of the board 
+function handleResultValidation() {
+    
+
+    //check who won
+    checkWin();
+
+    if(gameActive){
+        //handles the changing from one to another player
+        handlePlayerChange();
+        //handle computer move
+        handleComputerMove();
+    }
+}
+
+//handle computer move
+function handleComputerMove(){
+
+
+    //choose move 
+    pickMove();
+
+    if (!checkWin()){
+        //change player
+        handlePlayerChange();
+    }
+    
+
+
+}
+
+function pickMove(){
+    //randomly choose a spot 
+    while(true){
+        //random number between 0 and 8 cause we have 9 cells
+        var move = Math.floor(Math.random()*8);
+
+        if(gameState[move]==''){
+            break;
+        }
+    }
+
+    //m has the move picked 
+    gameState[move] = currentPlayer
+    document.getElementById(move).innerHTML = currentPlayer;
+
+
+}
+
+//this function handles the clicks
 function handleCellClick(clickedCellEvent) {
+
     const clickedCell = clickedCellEvent.target;
     const clickedCellIndex = parseInt(clickedCell.getAttribute('data-cell-index'));
-
+    
+    //checks if the currents cell is an avaliable cell and if the game is active
     if (gameState[clickedCellIndex] !== "" || !gameActive) {
         return;
     }
 
+
     handleCellPlayed(clickedCell, clickedCellIndex);
+    
     handleResultValidation();
 }
 
+//handles the restaring of the game
 function handleRestartGame() {
     gameActive = true;
     currentPlayer = "X";
@@ -86,5 +165,6 @@ function handleRestartGame() {
     document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
 }
 
+//registers the clicks 
 document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleCellClick));
 document.querySelector('.restart').addEventListener('click', handleRestartGame);
