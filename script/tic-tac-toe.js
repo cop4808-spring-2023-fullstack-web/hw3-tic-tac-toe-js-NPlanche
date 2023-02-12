@@ -41,6 +41,10 @@ function handleModal(){
     }else if(response == "failure"){
         winner.innerHTML = 'The computer won this game.';
         $('#eventCreated').modal('show');
+    }else if(response == "draw"){
+        winner.innerHTML = 'The battle is a draw';
+        $('#eventCreated').modal('show');
+
     }
 
 }
@@ -56,48 +60,36 @@ function handleModal(){
 
 //---------------------------------
 
-function handleTurn() {
 
-   // turnStatus.innerHTML = currentPlayerTurn();
 
-    if (currentPlayer == 'X'){
-
-        turnMachine.innerHTML = 'No Active';
-        turnMe.innerHTML = 'Active';
-    }else {
-        turnMachine.innerHTML = 'Active';
-        turnMe.innerHTML = 'No Active';
-    }  
-    
-    
-
-}
 function handleScore() {
     if (currentPlayer == 'X'){
         scoreMeCount += 1;
     }else {
         scoreMachineCount += 1;
     }    
+
     scoreMachine.innerHTML = scoreMachineCount;
     scoreMe.innerHTML = scoreMeCount;
 }
+
+
 function handleWinner() {
     if (currentPlayer == 'X'){
         response = "success";
         handleModal();
-        winnerMachine.innerHTML = 'No Winner';
-        winnerMe.innerHTML = 'Winner';
-    }else {
+    }else if (currentPlayer == 'O'){
         response = "failure";
         handleModal();
-        winnerMachine.innerHTML = 'Winner';
-        winnerMe.innerHTML = 'No Winner';
-    } 
+    } else{
+        response = "draw";
+        handleModal();
+    }
 
 }
 scoreMachine.innerHTML = scoreMachineCount;
 scoreMe.innerHTML = scoreMeCount;
-handleTurn(currentPlayer);
+
 // --------------------------------------------------
 
 //condition for a player
@@ -188,7 +180,7 @@ function handlePlayerChange() {
     // --------------------------------------------------
     // UPDATE 01-11-23
     // --------------------------------------------------
-    handleTurn();
+    //handleTurn();
     // --------------------------------------------------
 }
 
