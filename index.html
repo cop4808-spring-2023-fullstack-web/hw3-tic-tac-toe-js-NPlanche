@@ -39,8 +39,7 @@
 
 
     
-    <div class="container" id="scoreboard">
-      
+    <div class="container" id="scoreboard">  
       <div class = "row"> 
 
         <table class = "table table-bordered">
@@ -80,17 +79,34 @@
 
     <!-- Create a put up of the winner -->
 
-    <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog">
-          <div class="card">
-              <div class="text-right cross"> <i class="fa fa-times"></i> </div>
-              <div class="card-body text-center"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
-                  <h4>CONGRATULATIONS!</h4>
-                  <p>You have been personally selected to take part in our 2017 annual visitors survey!</p> <button class="btn btn-out btn-square continue">CONTINUE</button>
-              </div>
+
+    <div class="container">
+      <h2>Modal Example</h2>
+      <!-- Button to Open the Modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Open modal
+      </button>
+    
+      <!-- The Modal -->
+      <div class="modal" id="eventCreated">
+        <div class="modal-dialog">
+          <div class="modal-content">
+          
+            <!-- Modal Header -->
+            <div class="modal-header">
+             <h4 class="modal-title" id="myModalLabel">Great!</h4>
           </div>
+          <div class="modal-body">
+            <p class="winner"></p>
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
       </div>
-  </div>
+
+
 
  
     

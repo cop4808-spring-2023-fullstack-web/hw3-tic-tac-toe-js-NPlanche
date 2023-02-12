@@ -24,15 +24,44 @@ let scoreMachineCount = 0;
 let scoreMeCount = 0;
 
 const turnStatus = document.querySelector('.turnStatus');
+const winner = document.querySelector('.winner');
 
 //---------------------------------
 
+// --------------------------------------------------
+// UPDATE 01-11-23
+// --------------------------------------------------
+var response = "";
+
+function handleModal(){
+
+    if (response == "success") {
+        winner.innerHTML = 'Human You WON';
+        $('#eventCreated').modal('show');
+    }else if(response == "failure"){
+        winner.innerHTML = 'The computer won this game.';
+        $('#eventCreated').modal('show');
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+//---------------------------------
 
 function handleTurn() {
 
    // turnStatus.innerHTML = currentPlayerTurn();
 
     if (currentPlayer == 'X'){
+
         turnMachine.innerHTML = 'No Active';
         turnMe.innerHTML = 'Active';
     }else {
@@ -54,12 +83,17 @@ function handleScore() {
 }
 function handleWinner() {
     if (currentPlayer == 'X'){
+        response = "success";
+        handleModal();
         winnerMachine.innerHTML = 'No Winner';
         winnerMe.innerHTML = 'Winner';
     }else {
+        response = "failure";
+        handleModal();
         winnerMachine.innerHTML = 'Winner';
         winnerMe.innerHTML = 'No Winner';
-    }    
+    } 
+
 }
 scoreMachine.innerHTML = scoreMachineCount;
 scoreMe.innerHTML = scoreMeCount;
