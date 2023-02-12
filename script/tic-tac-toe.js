@@ -22,14 +22,26 @@ const winnerMachine = document.querySelector('.winnerMachine');
 const winnerMe = document.querySelector('.winnerMe');
 let scoreMachineCount = 0;
 let scoreMeCount = 0;
+
+const turnStatus = document.querySelector('.turnStatus');
+
+//---------------------------------
+
+
 function handleTurn() {
+
+   // turnStatus.innerHTML = currentPlayerTurn();
+
     if (currentPlayer == 'X'){
         turnMachine.innerHTML = 'No Active';
         turnMe.innerHTML = 'Active';
     }else {
         turnMachine.innerHTML = 'Active';
         turnMe.innerHTML = 'No Active';
-    }    
+    }  
+    
+    
+
 }
 function handleScore() {
     if (currentPlayer == 'X'){

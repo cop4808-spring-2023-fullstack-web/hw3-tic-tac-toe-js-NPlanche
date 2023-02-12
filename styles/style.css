@@ -108,3 +108,18 @@ a:visited {
 #heart {
     font-size: 1.6rem;
 }
+
+/*************************************/
+/******      ScoreBoard          *****/
+/*************************************/
+#scoreboard{
+    border:1px solid black;
+}
+
+#title{
+    text-align: center;
+}
+
+.theading h3{
+    text-align: center;
+}

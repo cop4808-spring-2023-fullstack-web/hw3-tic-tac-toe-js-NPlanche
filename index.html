@@ -32,15 +32,74 @@
 
   
 
-    <p class="status"></p>
+    <!-- <p class="status"></p> -->
     <button class="restart">New Game</button>
 
-    <!-- Status Table -->
+    <!-- Status Table--> 
+
+
+    
+    <div class="container" id="scoreboard">
+      
+      <div class = "row"> 
+
+        <table class = "table table-bordered">
+          <h3 id="title">Scoring Board</h3>
+          <thead>
+            <th>Computer Team</th>
+            <th>Human Team</th>
+
+            <tr>
+              <td class="scoreMachine"></td>
+              <td class="scoreMe"></td>         
+            </tr>
+
+          </thead>
+
+          <tbody>
+            <tr>
+              <th class>Current Turn: </th>
+              <th class="status"></th>
+            </tr>
+
+            <th>Delete later</th>
+            <tr>
+              <td><span class="winnerMachine"></span></td>
+              <td><span class="winnerMe"></span></td>
+
+            </tr>
+            <tr>
+              <td><span class="turnMachine"></span></td>
+              <td><span class="turnMe"></span></td>
+            </tr>
+
+          </tbody>
+        </table> 
+
+    </div>
+
+    <!-- Create a put up of the winner -->
+
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+          <div class="card">
+              <div class="text-right cross"> <i class="fa fa-times"></i> </div>
+              <div class="card-body text-center"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
+                  <h4>CONGRATULATIONS!</h4>
+                  <p>You have been personally selected to take part in our 2017 annual visitors survey!</p> <button class="btn btn-out btn-square continue">CONTINUE</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+ 
+    
 
 
 
 
-    <table border="1">
+    
+    <!-- <table border="1">
       <tr>
         <th style="width:100px;"></th>
         <th style="width:100px;">&nbsp;Machine&nbsp;</th>
@@ -61,7 +120,11 @@
         <td><span class="winnerMachine"></span></td>
         <td><span class="winnerMe"></span></td>
       </tr>
-    </table>
+    </table>  -->
+
+
+
+    
     <footer>
       <p>MADE WITH <span id="heart">♥</span> BY 
         <a href="https://github.com/michaelkolesidis/tic-tac-toe" target="_blank">
