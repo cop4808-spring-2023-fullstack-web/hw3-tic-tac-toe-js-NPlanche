@@ -14,17 +14,12 @@ statusDisplay.innerHTML = currentPlayerTurn();
 // --------------------------------------------------
 // UPDATE 01-11-23
 // --------------------------------------------------
-const turnMachine = document.querySelector('.turnMachine');
-const turnMe = document.querySelector('.turnMe');
+
 const scoreMachine = document.querySelector('.scoreMachine');
 const scoreMe = document.querySelector('.scoreMe');
-const winnerMachine = document.querySelector('.winnerMachine');
-const winnerMe = document.querySelector('.winnerMe');
+const winner = document.querySelector('.winner');
 let scoreMachineCount = 0;
 let scoreMeCount = 0;
-
-const turnStatus = document.querySelector('.turnStatus');
-const winner = document.querySelector('.winner');
 
 //---------------------------------
 
@@ -48,19 +43,6 @@ function handleModal(){
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-//---------------------------------
-
-
 
 function handleScore() {
     if (currentPlayer == 'X'){
@@ -87,6 +69,14 @@ function handleWinner() {
     }
 
 }
+
+//---------------------------------
+
+
+// --------------------------------------------------
+// UPDATE 01-11-23
+// --------------------------------------------------
+
 scoreMachine.innerHTML = scoreMachineCount;
 scoreMe.innerHTML = scoreMeCount;
 
@@ -177,11 +167,6 @@ function handlePlayerChange() {
     //displays who the current player is 
     statusDisplay.innerHTML = currentPlayerTurn();
 
-    // --------------------------------------------------
-    // UPDATE 01-11-23
-    // --------------------------------------------------
-    //handleTurn();
-    // --------------------------------------------------
 }
 
 //handles the validation of the board 
@@ -228,13 +213,6 @@ function pickMove(){
 
 }
 
-//Status Bar
-function status(){
-    //track who won 
-
-    //display who won 
-
-}
 
 
 
@@ -264,12 +242,6 @@ function handleRestartGame() {
     statusDisplay.innerHTML = currentPlayerTurn();
     document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
 
-    // --------------------------------------------------
-    // UPDATE 01-11-23
-    // --------------------------------------------------
-    winnerMachine.innerHTML = '';
-    winnerMe.innerHTML = '';
-    // --------------------------------------------------
 }
 
 //registers the clicks 

@@ -114,12 +114,9 @@ a:visited {
 /*************************************/
 #scoreboard{
     border:1px solid black;
+    width: 250px;
 }
 
 #title{
-    text-align: center;
-}
-
-.theading h3{
     text-align: center;
 }
