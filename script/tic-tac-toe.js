@@ -12,40 +12,45 @@ const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
 statusDisplay.innerHTML = currentPlayerTurn();
 
 // --------------------------------------------------
-// UPDATE 01-11-23
+// New variables
 // --------------------------------------------------
-
 const scoreMachine = document.querySelector('.scoreMachine');
 const scoreMe = document.querySelector('.scoreMe');
 const winner = document.querySelector('.winner');
+
+//machine wins counter
 let scoreMachineCount = 0;
+//human wins counter
 let scoreMeCount = 0;
+//shows initial score
 scoreMachine.innerHTML = scoreMachineCount;
 scoreMe.innerHTML = scoreMeCount;
 
 var delay = 5000; // second
+var response = "";
 var box1 = "";
 var box2 = "";
 var box3 = "";
 
 
 
-var response = "";
 
+//handles the modal message 
 function handleModal(){
 
     if (response == "success") {
-        winner.innerHTML = 'Human You WON';
+        winner.innerHTML = 'Humankind has prevailed.';
         $('#eventCreated').modal('show');
     }else if(response == "failure"){
-        winner.innerHTML = 'The computer won this game.';
+        winner.innerHTML = 'It was a win for the computer in this round.';
         $('#eventCreated').modal('show');
     }else if(response == "draw"){
-        winner.innerHTML = 'The battle is a draw';
+        winner.innerHTML = 'There was no winner in this battle.';
         $('#eventCreated').modal('show');
     }
 }
 
+//handles score: add to the winner's counter
 function handleScore() {
     if (currentPlayer == 'X'){
         scoreMeCount += 1;
@@ -57,6 +62,7 @@ function handleScore() {
     scoreMe.innerHTML = scoreMeCount;
 }
 
+// handles winner: evaluates who the winner is and set response to the appropiate message
 function handleWinner() {
     if (currentPlayer == 'X'){
         response = "success";
@@ -103,7 +109,7 @@ function checkWin(){
 
 
         // --------------------------------------------------
-        // UPDATE 01-11-23
+        // Records the location of the winning boxes
         // --------------------------------------------------
 
         if (a === b && b === c){
@@ -125,7 +131,7 @@ function checkWin(){
         //that player has won the game
 
         // --------------------------------------------------
-        // UPDATE 01-11-23
+        // Changes the color of the winning locations to blueviolet
         // --------------------------------------------------
             document.getElementById(box1).style.color= "blueviolet";
             document.getElementById(box2).style.color= "blueviolet";
@@ -152,7 +158,7 @@ function checkWin(){
 
 
         // --------------------------------------------------
-        // UPDATE 01-11-23
+        // Calls handleScore and handleWinner
         // --------------------------------------------------
         handleScore();
         handleWinner();
@@ -203,7 +209,6 @@ function handleResultValidation() {
 function handleComputerMove(){
     //choose move 
     pickMove();
-    
 
         if (!checkWin()){
             //change player
