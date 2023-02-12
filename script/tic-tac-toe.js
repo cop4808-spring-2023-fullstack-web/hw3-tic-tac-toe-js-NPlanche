@@ -24,6 +24,10 @@ scoreMachine.innerHTML = scoreMachineCount;
 scoreMe.innerHTML = scoreMeCount;
 
 var delay = 5000; // second
+var box1 = "";
+var box2 = "";
+var box3 = "";
+
 
 
 var response = "";
@@ -97,6 +101,20 @@ function checkWin(){
         let b = gameState[winCondition[1]];
         let c = gameState[winCondition[2]];
 
+
+        // --------------------------------------------------
+        // UPDATE 01-11-23
+        // --------------------------------------------------
+
+        if (a === b && b === c){
+            box1 =winCondition[0];
+            box2 =winCondition[1];
+            box3 =winCondition[2];
+            
+        }
+
+        // --------------------------------------------------
+
         //if either a, b, or c are empty then the game is not won
         if (a === '' || b === '' || c === '') {
             continue;
@@ -104,8 +122,19 @@ function checkWin(){
 
         // if a, b, and c are the same then that player has won
         if (a === b && b === c) {
-            //that player has won the game
+        //that player has won the game
+
+        // --------------------------------------------------
+        // UPDATE 01-11-23
+        // --------------------------------------------------
+            document.getElementById(box1).style.color= "blueviolet";
+            document.getElementById(box2).style.color= "blueviolet";
+            document.getElementById(box3).style.color= "blueviolet";
+        // --------------------------------------------------
+
+
             roundWon = true;
+
             //get out of  the loop
             break
         }
@@ -118,6 +147,9 @@ function checkWin(){
         //game is no longer active because its be won
         gameActive = false;
         statusDisplay.style.color = "rgb(251,100,204)";
+
+
+
 
         // --------------------------------------------------
         // UPDATE 01-11-23
@@ -156,8 +188,6 @@ function handlePlayerChange() {
 
 //handles the validation of the board 
 function handleResultValidation() {
-    
-
     //check who won
     checkWin();
 
@@ -170,7 +200,6 @@ function handleResultValidation() {
 }
 
 //handle computer move
-
 function handleComputerMove(){
     //choose move 
     pickMove();
@@ -220,14 +249,28 @@ function handleCellClick(clickedCellEvent) {
 
 //handles the restaring of the game
 function handleRestartGame() {
+    
     gameActive = true;
     currentPlayer = "X";
     gameState = ["", "", "", "", "", "", "", "", ""];
+    // --------------------------------------------------
+    // UPDATE 01-11-23: Reset highlighted spaces to their original color
+    // --------------------------------------------------
+    document.getElementById(box1).style.color= "rgb(65, 65, 65)";
+    document.getElementById(box2).style.color= "rgb(65, 65, 65)";
+    document.getElementById(box3).style.color= "rgb(65, 65, 65)";
+    // --------------------------------------------------
     statusDisplay.style.color = "rgb(65, 65, 65)";
     statusDisplay.innerHTML = currentPlayerTurn();
     document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
 
+
+
+
+
 }
+
+
 
 //registers the clicks 
 document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleCellClick));
