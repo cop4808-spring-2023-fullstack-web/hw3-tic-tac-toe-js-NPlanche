@@ -20,12 +20,12 @@ const scoreMe = document.querySelector('.scoreMe');
 const winner = document.querySelector('.winner');
 let scoreMachineCount = 0;
 let scoreMeCount = 0;
+scoreMachine.innerHTML = scoreMachineCount;
+scoreMe.innerHTML = scoreMeCount;
 
-//---------------------------------
+var delay = 5000; // second
 
-// --------------------------------------------------
-// UPDATE 01-11-23
-// --------------------------------------------------
+
 var response = "";
 
 function handleModal(){
@@ -39,9 +39,7 @@ function handleModal(){
     }else if(response == "draw"){
         winner.innerHTML = 'The battle is a draw';
         $('#eventCreated').modal('show');
-
     }
-
 }
 
 function handleScore() {
@@ -55,7 +53,6 @@ function handleScore() {
     scoreMe.innerHTML = scoreMeCount;
 }
 
-
 function handleWinner() {
     if (currentPlayer == 'X'){
         response = "success";
@@ -67,18 +64,7 @@ function handleWinner() {
         response = "draw";
         handleModal();
     }
-
 }
-
-//---------------------------------
-
-
-// --------------------------------------------------
-// UPDATE 01-11-23
-// --------------------------------------------------
-
-scoreMachine.innerHTML = scoreMachineCount;
-scoreMe.innerHTML = scoreMeCount;
 
 // --------------------------------------------------
 
@@ -166,7 +152,6 @@ function handlePlayerChange() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     //displays who the current player is 
     statusDisplay.innerHTML = currentPlayerTurn();
-
 }
 
 //handles the validation of the board 
@@ -178,21 +163,26 @@ function handleResultValidation() {
 
     if(gameActive){
         //handles the changing from one to another player
-        handlePlayerChange();
+        handlePlayerChange()
         //handle computer move
-        handleComputerMove();
+        handleComputerMove()
     }
 }
 
 //handle computer move
+
 function handleComputerMove(){
     //choose move 
     pickMove();
+    
 
-    if (!checkWin()){
-        //change player
-        handlePlayerChange();
-    }
+        if (!checkWin()){
+            //change player
+
+            handlePlayerChange();
+        };
+
+
 }
 
 function pickMove(){
@@ -213,9 +203,6 @@ function pickMove(){
 
 }
 
-
-
-
 //this function handles the clicks
 function handleCellClick(clickedCellEvent) {
 
@@ -227,9 +214,7 @@ function handleCellClick(clickedCellEvent) {
         return;
     }
 
-
     handleCellPlayed(clickedCell, clickedCellIndex);
-    
     handleResultValidation();
 }
 
