@@ -11,6 +11,49 @@ const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
 
 statusDisplay.innerHTML = currentPlayerTurn();
 
+// --------------------------------------------------
+// UPDATE 01-11-23
+// --------------------------------------------------
+const turnMachine = document.querySelector('.turnMachine');
+const turnMe = document.querySelector('.turnMe');
+const scoreMachine = document.querySelector('.scoreMachine');
+const scoreMe = document.querySelector('.scoreMe');
+const winnerMachine = document.querySelector('.winnerMachine');
+const winnerMe = document.querySelector('.winnerMe');
+let scoreMachineCount = 0;
+let scoreMeCount = 0;
+function handleTurn() {
+    if (currentPlayer == 'X'){
+        turnMachine.innerHTML = 'No Active';
+        turnMe.innerHTML = 'Active';
+    }else {
+        turnMachine.innerHTML = 'Active';
+        turnMe.innerHTML = 'No Active';
+    }    
+}
+function handleScore() {
+    if (currentPlayer == 'X'){
+        scoreMeCount += 1;
+    }else {
+        scoreMachineCount += 1;
+    }    
+    scoreMachine.innerHTML = scoreMachineCount;
+    scoreMe.innerHTML = scoreMeCount;
+}
+function handleWinner() {
+    if (currentPlayer == 'X'){
+        winnerMachine.innerHTML = 'No Winner';
+        winnerMe.innerHTML = 'Winner';
+    }else {
+        winnerMachine.innerHTML = 'Winner';
+        winnerMe.innerHTML = 'No Winner';
+    }    
+}
+scoreMachine.innerHTML = scoreMachineCount;
+scoreMe.innerHTML = scoreMeCount;
+handleTurn(currentPlayer);
+// --------------------------------------------------
+
 //condition for a player
 const winningConditions = [
     [0, 1, 2],
@@ -61,6 +104,14 @@ function checkWin(){
         //game is no longer active because its be won
         gameActive = false;
         statusDisplay.style.color = "rgb(251,100,204)";
+
+        // --------------------------------------------------
+        // UPDATE 01-11-23
+        // --------------------------------------------------
+        handleScore();
+        handleWinner();
+        // --------------------------------------------------
+                
         return roundWon;
     }
 
@@ -87,6 +138,12 @@ function handlePlayerChange() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     //displays who the current player is 
     statusDisplay.innerHTML = currentPlayerTurn();
+
+    // --------------------------------------------------
+    // UPDATE 01-11-23
+    // --------------------------------------------------
+    handleTurn();
+    // --------------------------------------------------
 }
 
 //handles the validation of the board 
@@ -106,8 +163,6 @@ function handleResultValidation() {
 
 //handle computer move
 function handleComputerMove(){
-
-
     //choose move 
     pickMove();
 
@@ -115,9 +170,6 @@ function handleComputerMove(){
         //change player
         handlePlayerChange();
     }
-    
-
-
 }
 
 function pickMove(){
@@ -137,6 +189,16 @@ function pickMove(){
 
 
 }
+
+//Status Bar
+function status(){
+    //track who won 
+
+    //display who won 
+
+}
+
+
 
 //this function handles the clicks
 function handleCellClick(clickedCellEvent) {
@@ -163,6 +225,13 @@ function handleRestartGame() {
     statusDisplay.style.color = "rgb(65, 65, 65)";
     statusDisplay.innerHTML = currentPlayerTurn();
     document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
+
+    // --------------------------------------------------
+    // UPDATE 01-11-23
+    // --------------------------------------------------
+    winnerMachine.innerHTML = '';
+    winnerMe.innerHTML = '';
+    // --------------------------------------------------
 }
 
 //registers the clicks 
