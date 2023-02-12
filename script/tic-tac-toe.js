@@ -107,7 +107,6 @@ function checkWin(){
         let b = gameState[winCondition[1]];
         let c = gameState[winCondition[2]];
 
-
         // --------------------------------------------------
         // Records the location of the winning boxes
         // --------------------------------------------------
@@ -118,7 +117,6 @@ function checkWin(){
             box3 =winCondition[2];
             
         }
-
         // --------------------------------------------------
 
         //if either a, b, or c are empty then the game is not won
@@ -138,7 +136,6 @@ function checkWin(){
             document.getElementById(box3).style.color= "blueviolet";
         // --------------------------------------------------
 
-
             roundWon = true;
 
             //get out of  the loop
@@ -153,9 +150,6 @@ function checkWin(){
         //game is no longer active because its be won
         gameActive = false;
         statusDisplay.style.color = "rgb(251,100,204)";
-
-
-
 
         // --------------------------------------------------
         // Calls handleScore and handleWinner
@@ -177,6 +171,8 @@ function checkWin(){
         gameActive = false;
         //color of the message
         statusDisplay.style.color = "rgb(251,100,204)";
+        response = "draw";
+        handleModal()
         return gameActive;
     }
 
@@ -210,13 +206,11 @@ function handleComputerMove(){
     //choose move 
     pickMove();
 
-        if (!checkWin()){
-            //change player
+    if (!checkWin()){
+        //change player
 
-            handlePlayerChange();
-        };
-
-
+        handlePlayerChange();
+    };
 }
 
 function pickMove(){
@@ -274,8 +268,6 @@ function handleRestartGame() {
 
 
 }
-
-
 
 //registers the clicks 
 document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleCellClick));
