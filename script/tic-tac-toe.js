@@ -32,9 +32,6 @@ var box1 = "";
 var box2 = "";
 var box3 = "";
 
-
-
-
 //handles the modal message 
 function handleModal(){
 
@@ -123,7 +120,6 @@ function checkWin(){
         if (a === '' || b === '' || c === '') {
             continue;
         }
-
         // if a, b, and c are the same then that player has won
         if (a === b && b === c) {
         //that player has won the game
@@ -135,7 +131,6 @@ function checkWin(){
             document.getElementById(box2).style.color= "blueviolet";
             document.getElementById(box3).style.color= "blueviolet";
         // --------------------------------------------------
-
             roundWon = true;
 
             //get out of  the loop
@@ -156,11 +151,9 @@ function checkWin(){
         // --------------------------------------------------
         handleScore();
         handleWinner();
-        // --------------------------------------------------
-                
+        // --------------------------------------------------        
         return roundWon;
     }
-
     //searches to see  if the board has empty spaces
     let roundDraw = !gameState.includes("");
     //its a draw
@@ -175,7 +168,6 @@ function checkWin(){
         handleModal()
         return gameActive;
     }
-
     return false;
 }
 
@@ -192,12 +184,13 @@ function handlePlayerChange() {
 function handleResultValidation() {
     //check who won
     checkWin();
-
     if(gameActive){
         //handles the changing from one to another player
-        handlePlayerChange()
+
+        handlePlayerChange();
+
         //handle computer move
-        handleComputerMove()
+        handleComputerMove();
     }
 }
 
@@ -208,12 +201,12 @@ function handleComputerMove(){
 
     if (!checkWin()){
         //change player
-
+        
         handlePlayerChange();
     };
 }
 
-function pickMove(){
+function pickMove(){  
     //randomly choose a spot 
     while(true){
         //random number between 0 and 8 cause we have 9 cells
@@ -223,12 +216,9 @@ function pickMove(){
             break;
         }
     }
-
     //m has the move picked 
     gameState[move] = currentPlayer
     document.getElementById(move).innerHTML = currentPlayer;
-
-
 }
 
 //this function handles the clicks
