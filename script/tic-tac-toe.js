@@ -125,11 +125,11 @@ function checkWin(){
         //that player has won the game
 
         // --------------------------------------------------
-        // Changes the color of the winning locations to blueviolet
+        // Changes the color of the winning locations to #FF2E63
         // --------------------------------------------------
-            document.getElementById(box1).style.color= "blueviolet";
-            document.getElementById(box2).style.color= "blueviolet";
-            document.getElementById(box3).style.color= "blueviolet";
+            document.getElementById(box1).style.color= "#FF2E63";
+            document.getElementById(box2).style.color= "#FF2E63";
+            document.getElementById(box3).style.color= "#FF2E63";
         // --------------------------------------------------
             roundWon = true;
 
@@ -245,18 +245,13 @@ function handleRestartGame() {
     // --------------------------------------------------
     // UPDATE 01-11-23: Reset highlighted spaces to their original color
     // --------------------------------------------------
-    document.getElementById(box1).style.color= "rgb(65, 65, 65)";
-    document.getElementById(box2).style.color= "rgb(65, 65, 65)";
-    document.getElementById(box3).style.color= "rgb(65, 65, 65)";
+    document.getElementById(box1).style.color= "#010A43";
+    document.getElementById(box2).style.color= "#010A43";
+    document.getElementById(box3).style.color= "#010A43";
     // --------------------------------------------------
-    statusDisplay.style.color = "rgb(65, 65, 65)";
+    statusDisplay.style.color = "#010A43";
     statusDisplay.innerHTML = currentPlayerTurn();
     document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
-
-
-
-
-
 }
 
 //registers the clicks 

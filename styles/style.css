@@ -5,7 +5,7 @@ body {
 }
 
 body {
-    color: rgb(65, 65, 65);
+    color: #010A43;
     background-color: rgb(255, 255, 255);
     font-family: Helvetica, sans-serif;
     display: flex;
@@ -31,7 +31,9 @@ body {
 .cell {
     width: 12rem;
     height: 12rem;
-    border: 6px solid rgb(65, 65, 65);
+    /* border: 6px solid rgb(65, 65, 65); */
+    border: 6px solid #FFC2C2;
+
     margin: -6px 0 0 -6px;
     text-align: center;
     vertical-align: middle;
@@ -112,11 +114,22 @@ a:visited {
 /******      ScoreBoard          *****/
 /*************************************/
 #scoreboard{
-    border:1px solid black;
+    border:1px solid #010A43;
     width: 250px;
 }
 
 #title{
     text-align: center;
 }
+
+.restart{
+    background-color:#010A43;
+    color: #FFC2C2;
+}
+
+.restart:hover{
+    background-color:#FFC2C2;
+    color: #010A43;
+}
+
 
