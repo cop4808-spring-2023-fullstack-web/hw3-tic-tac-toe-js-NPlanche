@@ -7,9 +7,5 @@
 - Created new clases for each button 
 - Implemented four new functions: one for each button
 
-<div align="center">
-  
-  <h3>Tic-Tac-Toe</h3>
-  ![](https://github.com/cop4808-spring-2023-fullstack-web/hw3-tic-tac-toe-js-NPlanche/blob/main/images/tictactoe.gif)
+![](https://github.com/cop4808-spring-2023-fullstack-web/hw3-tic-tac-toe-js-NPlanche/blob/main/images/tictactoe.gif)
 
-</div>
